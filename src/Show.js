@@ -13,7 +13,7 @@ const Font = styled.p`
 `;
 const Show = () => {
   // 좋아요
-  const [like, setLike] = useState(0);
+  const [like, love] = useState(0);
   // 텍스트
   const [text, setText] = useState("");
   // 다크모드
@@ -23,6 +23,11 @@ const Show = () => {
   const [fontColor, setFontColor] = useState("black");
   // 데이터
   const [showpicture, setShowPicture] = useState([]);
+  // 제목
+  const [bye, setBye] = useState({
+    color: "blue",
+    comment: "즐거우셨나요?",
+  });
 
   const show = () => {
     setShowPicture(data.pictures);
@@ -41,6 +46,10 @@ const Show = () => {
   const textRef = useRef(null);
   const commentSubmit = () => {
     setText(textRef.current.value);
+  };
+
+  const byeClick = () => {
+    setBye((prev) => ({ ...prev, comment: "감사합니다" }));
   };
 
   return (
@@ -63,11 +72,13 @@ const Show = () => {
         ))}
 
         <Font fontcolor={fontColor}>방명록</Font>
-        <h1 onClick={() => setLike(like + 1)}>❤️</h1>
+        <h1 onClick={() => love(like + 1)}>❤️</h1>
         <Font fontcolor={fontColor}>{like}</Font>
         <input type="text" placeholder="코멘트를 입력해주세요" ref={textRef} />
         <button onClick={commentSubmit}>입력</button>
         <Font fontcolor={fontColor}>{text}</Font>
+        <Font fontcolor={bye.color}>{bye.comment}</Font>
+        <button onClick={byeClick}>네</button>
       </Dom>
     </>
   );

@@ -41,6 +41,15 @@ const Show = () => {
     };
     fetchData();
   }, []);
+
+  // useEffect(() => {
+  //   axios.get(`/jslee/gallery/goods.htm?format=json`).then((response) => {
+  //     console.log(response.data.collections);
+  //     setShowPicture(response.data.collections);
+  //     console.log("success");
+  //   });
+  // }, []);
+
   // const show = () => {
   //   axios.get(`/jslee/gallery/goods.htm?format=json`).then((res) => {
   //     setShowPicture(res.data.collections);

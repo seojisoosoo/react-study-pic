@@ -42,7 +42,7 @@ const Show = () => {
     fetchData();
   }, []);
   // const show = () => {
-  //   axios.get(url).then((res) => {
+  //   axios.get(`/jslee/gallery/goods.htm?format=json`).then((res) => {
   //     setShowPicture(res.data.collections);
   //     console.log(res.data.collections);
   //   });
@@ -76,6 +76,7 @@ const Show = () => {
   const stopClick = () => {
     audioRef.current.pause();
   };
+
   return (
     <>
       <Dom btncolor={btnColor}>
@@ -94,10 +95,25 @@ const Show = () => {
           //   <Font fontcolor={fontColor}>{picture.content}</Font>
           // </Fragment>
           <Fragment key={picture.no}>
-            <Img src={picture.cover} alt="#" />
-            <Font fontcolor={fontColor}>{picture.name}</Font>
-            <Font fontcolor={fontColor}>{picture.author}</Font>
-            <Font fontcolor={fontColor}>{picture.material}</Font>
+            <Img
+              src={
+                "https://culture.seogwipo.go.kr/files/collection/" +
+                picture.coverThumb
+              }
+              alt="#"
+            />
+            <Font fontcolor={fontColor}>
+              <strong>작품명 | </strong>
+              {picture.name}
+            </Font>
+            <Font fontcolor={fontColor}>
+              <strong>작가 | </strong>
+              {picture.author}
+            </Font>
+            <Font fontcolor={fontColor}>
+              <strong>재료 | </strong>
+              {picture.material}
+            </Font>
           </Fragment>
         ))}
 

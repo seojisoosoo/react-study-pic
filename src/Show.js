@@ -77,6 +77,10 @@ const Show = () => {
     audioRef.current.pause();
   };
 
+  useEffect(() => {
+    alert("좋아요를 눌렀습니다!");
+  }, [like]);
+
   return (
     <>
       <Dom btncolor={btnColor}>

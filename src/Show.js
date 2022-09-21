@@ -1,6 +1,9 @@
-import React, { useState, useRef, Fragment } from "react";
+import React, { useState, useRef, Fragment, useEffect } from "react";
 import data from "./db/data.json";
 import styled from "styled-components";
+import music from "./media/우물-8.mp3";
+import axios from "axios";
+
 const Img = styled.img`
   width: 50%;
 `;
@@ -29,9 +32,23 @@ const Show = () => {
     comment: "즐거우셨나요?",
   });
 
-  const show = () => {
-    setShowPicture(data.pictures);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(`/jslee/gallery/goods.htm?format=json`);
+      console.log(response.data.collections);
+      setShowPicture(response.data.collections);
+      console.log("success");
+    };
+    fetchData();
+  }, []);
+  // const show = () => {
+  //   axios.get(url).then((res) => {
+  //     setShowPicture(res.data.collections);
+  //     console.log(res.data.collections);
+  //   });
+  //   // setShowPicture(data.pictures);
+  // };
+
   const darkMode = () => {
     console.log(dark);
     setDark((dark) => !dark);
@@ -52,22 +69,35 @@ const Show = () => {
     setBye((prev) => ({ ...prev, comment: "감사합니다" }));
   };
 
+  const audioRef = useRef(null);
+  const playClick = () => {
+    audioRef.current.play();
+  };
+  const stopClick = () => {
+    audioRef.current.pause();
+  };
   return (
     <>
       <Dom btncolor={btnColor}>
-        <button onClick={show}>미술관 입장</button>
-        {/* <button btncolor="black" onClick={darkMode}>
-        MODE
-      </button> */}
+        {/* <button onClick={show}>미술관 입장</button> */}
+        <button>미술관 입장</button>
         <button onClick={darkMode}>MODE</button>
-
+        <audio src={music} ref={audioRef} />
+        <button onClick={playClick}>재생</button>
+        <button onClick={stopClick}>중지</button>
         <br />
         {showpicture.map((picture) => (
-          <Fragment key={picture.id}>
-            <Img src={picture.img} alt="#" />
-            <Font fontcolor={fontColor}>{picture.title}</Font>
-            <Font fontcolor={fontColor}>{picture.photographer}</Font>
-            <Font fontcolor={fontColor}>{picture.content}</Font>
+          // <Fragment key={picture.id}>
+          //   <Img src={picture.img} alt="#" />
+          //   <Font fontcolor={fontColor}>{picture.title}</Font>
+          //   <Font fontcolor={fontColor}>{picture.photographer}</Font>
+          //   <Font fontcolor={fontColor}>{picture.content}</Font>
+          // </Fragment>
+          <Fragment key={picture.no}>
+            <Img src={picture.cover} alt="#" />
+            <Font fontcolor={fontColor}>{picture.name}</Font>
+            <Font fontcolor={fontColor}>{picture.author}</Font>
+            <Font fontcolor={fontColor}>{picture.material}</Font>
           </Fragment>
         ))}
 

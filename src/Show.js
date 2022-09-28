@@ -16,9 +16,9 @@ const Font = styled.p`
 `;
 const Show = () => {
   // 좋아요
-  const [like, love] = useState(0);
+  // const [like, love] = useState(0);
   // 텍스트
-  const [text, setText] = useState("");
+  // const [text, setText] = useState("");
   // 다크모드
   const [dark, setDark] = useState(false);
   // 다크모드 - color
@@ -27,10 +27,10 @@ const Show = () => {
   // 데이터
   const [showpicture, setShowPicture] = useState([]);
   // 제목
-  const [bye, setBye] = useState({
-    color: "blue",
-    comment: "즐거우셨나요?",
-  });
+  // const [bye, setBye] = useState({
+  //   color: "blue",
+  //   comment: "즐거우셨나요?",
+  // });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,14 +69,14 @@ const Show = () => {
       setBtnColor("black");
     }
   };
-  const textRef = useRef(null);
-  const commentSubmit = () => {
-    setText(textRef.current.value);
-  };
+  // const textRef = useRef(null);
+  // const commentSubmit = () => {
+  //   setText(textRef.current.value);
+  // };
 
-  const byeClick = () => {
-    setBye((prev) => ({ ...prev, comment: "감사합니다" }));
-  };
+  // const byeClick = () => {
+  //   setBye((prev) => ({ ...prev, comment: "감사합니다" }));
+  // };
 
   const audioRef = useRef(null);
   const playClick = () => {
@@ -86,9 +86,9 @@ const Show = () => {
     audioRef.current.pause();
   };
 
-  useEffect(() => {
-    alert("좋아요를 눌렀습니다!");
-  }, [like]);
+  // useEffect(() => {
+  //   alert("좋아요를 눌렀습니다!");
+  // }, [like]);
 
   return (
     <>
@@ -129,15 +129,6 @@ const Show = () => {
             </Font>
           </Fragment>
         ))}
-
-        <Font fontcolor={fontColor}>방명록</Font>
-        <h1 onClick={() => love(like + 1)}>❤️</h1>
-        <Font fontcolor={fontColor}>{like}</Font>
-        <input type="text" placeholder="코멘트를 입력해주세요" ref={textRef} />
-        <button onClick={commentSubmit}>입력</button>
-        <Font fontcolor={fontColor}>{text}</Font>
-        <Font fontcolor={bye.color}>{bye.comment}</Font>
-        <button onClick={byeClick}>네</button>
       </Dom>
     </>
   );

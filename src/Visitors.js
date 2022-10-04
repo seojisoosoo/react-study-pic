@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Font = styled.p`
@@ -6,6 +7,7 @@ const Font = styled.p`
 `;
 
 const Visitors = () => {
+  const { state } = useLocation();
   const [like, love] = useState(0);
   const [text, setText] = useState("");
   const textRef = useRef(null);
@@ -22,12 +24,13 @@ const Visitors = () => {
   const byeClick = () => {
     setBye((prev) => ({ ...prev, comment: "감사합니다" }));
   };
-  useEffect(() => {
-    alert("좋아요를 눌렀습니다!");
-  }, [like]);
+  //   useEffect(() => {
+  //     alert("좋아요를 눌렀습니다!");
+  //   }, [like]);
 
   return (
     <>
+      <h1>{state.name}반갑습니다!</h1>
       <Font>방명록</Font>
       <h1 onClick={() => love(like + 1)}>❤️</h1>
       <Font>{like}</Font>

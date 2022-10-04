@@ -32,6 +32,8 @@ const Show = () => {
   //   comment: "즐거우셨나요?",
   // });
 
+  // "proxy": "https://culture.seogwipo.go.kr",
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(`/jslee/gallery/goods.htm?format=json`);

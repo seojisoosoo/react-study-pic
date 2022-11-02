@@ -1,0 +1,52 @@
+@keyframes tada {
+    from {
+      transform: scale3d(1, 1, 1);
+    }
+  
+    10%,
+    20% {
+      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+  
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+  
+    40%,
+    60%,
+    80% {
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+  
+    to {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  
+  .tada {
+    animation: tada;
+  }
+  .tada:hover {
+    animation: tada;
+  }
+  /* This only changes this particular animation duration */
+.animate__animated.animate__bounce {
+    --animate-duration: 2s;
+  }
+  
+  /* This changes all the animations globally */
+  :root {
+    --animate-duration: 800ms;
+    --animate-delay: 0.9s;
+  }
+
+  .animate_strech{
+    transition: font-size 5s;
+  }
+.animate_strech:hover{
+    font-size: 50pt;
+    color: blue;
+}

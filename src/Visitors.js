@@ -7,7 +7,7 @@ const Font = styled.p`
 `;
 
 const Visitors = () => {
-  const { state } = useLocation();
+  // const { state } = useLocation();
   const [like, love] = useState(0);
   const [text, setText] = useState("");
   const textRef = useRef(null);
@@ -30,7 +30,7 @@ const Visitors = () => {
 
   return (
     <>
-      <h1>{state.name}반갑습니다!</h1>
+      {/* <h1>{state.name}반갑습니다!</h1> */}
       <Font>방명록</Font>
       <h1 onClick={() => love(like + 1)}>❤️</h1>
       <Font>{like}</Font>

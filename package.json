@@ -44,5 +44,5 @@
   "devDependencies": {
     "http-proxy-middleware": "^2.0.6"
   },
-  "proxy":"https://www.jeju.go.kr/rest/JejuHdMuseumCollection/getJejuHdMuseumCollectionList.json"
+  "proxy": "https://culture.seogwipo.go.kr"
 }

@@ -10,9 +10,11 @@ const Landing = () => {
   //   navigate(url, { state: { name: name } });
   // };
   const [name, setName] = useState("");
+  const [hi, setHi] = useState("");
   const nameSave = () => {
     setName(nameRef.current.value);
     console.log(name);
+    setHi("님 반갑습니다");
   };
   return (
     <div>
@@ -20,7 +22,10 @@ const Landing = () => {
       <input placeholder="이름을 입력하세요" ref={nameRef} />
       {/* <button onClick={() => saveClick("/visitors", nameRef.current.value)}> */}
       <button onClick={nameSave}>저장</button>
-      <p>{name}님 반갑습니다</p>
+      <p>
+        {name}
+        {hi}
+      </p>
       {/* <Link to="/visitors">
         <button>방명록 쓰기</button>
       </Link> */}

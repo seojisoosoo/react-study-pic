@@ -3,6 +3,9 @@ import data from "./db/data.json";
 import styled from "styled-components";
 import music from "./media/우물-8.mp3";
 import axios from "axios";
+import { useRecoilState } from "recoil"; // 훅 import
+import { detail } from "./atoms/details";
+import { useNavigate } from "react-router-dom";
 
 const Img = styled.img`
   width: 50%;
@@ -26,6 +29,8 @@ const Show = () => {
   const [fontColor, setFontColor] = useState("black");
   // 데이터
   const [showpicture, setShowPicture] = useState([]);
+  // const [detail, setDetail] = useRecoilState(detail); // 전역상태를 state로 만듦
+
   // 제목
   // const [bye, setBye] = useState({
   //   color: "blue",
@@ -91,6 +96,11 @@ const Show = () => {
   // useEffect(() => {
   //   alert("좋아요를 눌렀습니다!");
   // }, [like]);
+  // const navigate = useNavigate();
+
+  // const pictureClick = (url, id) => {
+  //   navigate(url, { state: { id: id } });
+  // };
 
   return (
     <>

@@ -2,10 +2,10 @@ import React from "react";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
-import Animation from "./Animation";
+// import Animation from "./Animation";
 import styled from "styled-components";
 import "./Landing.css";
-import "animate.css";
+// import "animate.css";
 
 const Landing = () => {
   const nameRef = useRef(null);
@@ -33,7 +33,7 @@ const Landing = () => {
         {name}
         {hi}
       </Font>
-      <Animation />
+      {/* <Animation /> */}
       {/* <Link to="/visitors">
         <button>방명록 쓰기</button>
       </Link> */}

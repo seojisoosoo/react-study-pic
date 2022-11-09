@@ -1,11 +1,7 @@
 import { atom } from "recoil";
-export const detail = atom({
-  key: "no",
-  default: {
-    id: ``,
-    coverThumb: ``,
-    title: ``,
-    author: ``,
-    material: ``,
-  },
+const details = atom({
+  key: "detail",
+  default: [],
 });
+
+export default details;

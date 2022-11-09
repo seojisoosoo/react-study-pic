@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Landing from "./Landing";
 import Visitors from "./Visitors";
 import ShowSecond from "./ShowSecond";
+import ShowDetail from "./ShowDetail";
 import {
   RecoilRoot,
   atom,
@@ -18,6 +19,7 @@ const App = () => {
       <RecoilRoot>
         <Routes>
           <Route path="/show" element={<Show />} />
+          <Route path="/show/:id" element={<ShowDetail />} />
           <Route path="/" element={<Landing />} />
           <Route path="/visitors" element={<Visitors />} />
           <Route path="/showsecond" element={<ShowSecond />} />

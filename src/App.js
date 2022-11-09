@@ -19,7 +19,7 @@ const App = () => {
       <RecoilRoot>
         <Routes>
           <Route path="/show" element={<Show />} />
-          <Route path="/id/showdetail" element={<ShowDetail />} />
+          <Route path="/show/:id" element={<ShowDetail />} />
           <Route path="/" element={<Landing />} />
           <Route path="/visitors" element={<Visitors />} />
           <Route path="/showsecond" element={<ShowSecond />} />

@@ -326,7 +326,7 @@ import styled from "styled-components";
 import music from "./media/우물-8.mp3";
 import axios from "axios";
 import { atom, useRecoilState } from "recoil"; // 훅 import
-import { detail } from "./atoms/details";
+import details from "./atoms/details";
 import { useNavigate } from "react-router-dom";
 
 const Img = styled.img`
@@ -350,7 +350,7 @@ const Show = () => {
   const [btnColor, setBtnColor] = useState("white");
   const [fontColor, setFontColor] = useState("black");
   // 데이터
-  const [showpicture, setShowPicture] = useRecoilState(detail);
+  const [showpicture, setShowPicture] = useRecoilState(details);
   // 제목
   // const [bye, setBye] = useState({
   //   color: "blue",
@@ -364,9 +364,6 @@ const Show = () => {
       const response = await axios.get(`/jslee/gallery/goods.htm?format=json`);
       console.log(response.data.collections);
       setShowPicture(response.data.collections);
-      console.log("success");
-      console.log("dd");
-      console.log("showpicture" + showpicture);
     };
     fetchData();
   }, []);
@@ -419,10 +416,13 @@ const Show = () => {
   //   alert("좋아요를 눌렀습니다!");
   // }, [like]);
   // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const pictureClick = (url, id) => {
+    console.log("클릭됐음!");
+    console.log("showpicture" + showpicture.filter((pic) => pic.no === id)[0]);
 
-  // const pictureClick = (url, id) => {
-  //   navigate(url, { state: { id: id } });
-  // };
+    navigate(url, { state: { id: id } });
+  };
 
   return (
     <>
@@ -435,12 +435,6 @@ const Show = () => {
         <button onClick={stopClick}>중지</button>
         <br />
         {showpicture.map((picture) => (
-          // <Fragment key={picture.id}>
-          //   <Img src={picture.img} alt="#" />
-          //   <Font fontcolor={fontColor}>{picture.title}</Font>
-          //   <Font fontcolor={fontColor}>{picture.photographer}</Font>
-          //   <Font fontcolor={fontColor}>{picture.content}</Font>
-          // </Fragment>
           <Fragment key={picture.no}>
             <Img
               src={
@@ -448,6 +442,7 @@ const Show = () => {
                 picture.coverThumb
               }
               alt="#"
+              onClick={() => pictureClick(`/show/${picture.no}}`, picture.no)}
             />
             <Font fontcolor={fontColor}>
               <strong>작품명 | </strong>

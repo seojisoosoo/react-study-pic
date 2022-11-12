@@ -1,10 +1,10 @@
 import React from "react";
-import Show from "./Show";
+import Show from "./pages/Show";
 import { Routes, Route } from "react-router-dom";
-import Landing from "./Landing";
-import Visitors from "./Visitors";
+import Landing from "./pages/Landing";
+import Visitors from "./pages/Visitors";
 import ShowSecond from "./ShowSecond";
-import ShowDetail from "./ShowDetail";
+import ShowDetail from "./pages/ShowDetail";
 import {
   RecoilRoot,
   atom,

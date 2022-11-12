@@ -1,6 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import details from "./atoms/details";
+import details from "../atoms/details";
 import { useLocation } from "react-router-dom";
 
 const ShowDetail = () => {

@@ -13,24 +13,53 @@ const Landing = () => {
   // const saveClick = (url, name) => {
   //   navigate(url, { state: { name: name } });
   // };
-  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
   const [hi, setHi] = useState("");
-  const nameSave = () => {
-    setName(nameRef.current.value);
-    console.log(name);
+  const [check, setCheck] = useState(false);
+
+  const saveData = () => {
+    setUserName(nameRef.current.value);
     setHi("님 반갑습니다");
+    // let userObj = { userName };
+    let userObj = localStorage.getItem("watched");
+
+    if (userObj == null) {
+      userObj = [];
+    } else {
+      // userObj에서 자료를 꺼내 따옴표를 제거하고 다시 userObj에 저장한다.
+      userObj = JSON.parse(userObj);
+    }
+
+    // 3.현재 상품 id를 userObj에 저장한다.
+    userObj.push(userName);
+    window.localStorage.setItem("userName", JSON.stringify(userObj));
   };
 
+  const callData = () => {
+    setCheck(true);
+  };
+
+  const onChange = (e) => {
+    setUserName(e.target.value);
+    setCheck(false);
+  };
+  let localStorageName = window.localStorage.getItem("userName");
   return (
     <Dom>
       <Font className="animate__animated animate__tada">
         미술관에 온 것을 환영합니다!!!!!!!!!!!!
       </Font>
-      <input placeholder="이름을 입력하세요" ref={nameRef} />
+      <input
+        placeholder="이름을 입력하세요"
+        ref={nameRef}
+        onChange={onChange}
+      />
       {/* <button onClick={() => saveClick("/visitors", nameRef.current.value)}> */}
-      <button onClick={nameSave}>저장</button>
-      <Font className="animate_strech">
-        {name}
+      <button onClick={saveData}>저장하기</button>
+      <button onClick={callData}> 불러오기</button>
+      <Font>
+        {check ? <p>{localStorageName}</p> : <> </>}
+        {userName}
         {hi}
       </Font>
       {/* <Animation /> */}
@@ -49,7 +78,6 @@ const Dom = styled.div`
   justify-content: center;
 `;
 const Font = styled.h1`
-  color: white;
   margin: 30px 0px;
   text-align: center;
 `;

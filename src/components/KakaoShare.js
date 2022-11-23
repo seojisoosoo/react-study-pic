@@ -28,10 +28,11 @@ const KakaoShare = () => {
         content: {
           title: '이중섭 미술관',
           description: '환영해요',
-          imageUrl: 'IMAGE_URL', // i.e. process.env.FETCH_URL + '/logo.png'
+          // imageUrl: 'IMAGE_URL', // i.e. process.env.FETCH_URL + '/logo.png'
           link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
+            // mobileWebUrl: window.location.href,
+            // webUrl: window.location.href,
+            webUrl:process.env.REACT_APP_FETCH_URL,
           },
         },
         social: {
@@ -44,14 +45,14 @@ const KakaoShare = () => {
             title: '웹으로 보기',
             link: {
               mobileWebUrl: window.location.href,
-              webUrl: window.location.href,
+              webUrl:process.env.REACT_APP_FETCH_URL,
             },
           },
           {
             title: '앱으로 보기',
             link: {
               mobileWebUrl: window.location.href,
-              webUrl: window.location.href,
+              webUrl:process.env.REACT_APP_FETCH_URL,
             },
           },
         ],

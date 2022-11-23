@@ -19,8 +19,8 @@ const KakaoShare = () => {
         container: '#kakao-link-btn',
         objectType: 'feed',
         content: {
-          title: '타이틀',
-          description: '#리액트 #카카오 #공유버튼',
+          title: '이중섭 미술관',
+          description: '환영해요',
           imageUrl: 'IMAGE_URL', // i.e. process.env.FETCH_URL + '/logo.png'
           link: {
             mobileWebUrl: window.location.href,

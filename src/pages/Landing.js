@@ -8,6 +8,7 @@ import "./Landing.css";
 // import "animate.css";
 
 const Landing = () => {
+  const navigate=useNavigate();
   const nameRef = useRef(null);
   // const navigate = useNavigate();
   // const saveClick = (url, name) => {
@@ -62,6 +63,7 @@ const Landing = () => {
         {userName}
         {hi}
       </Font>
+      <button onClick={()=>{navigate('/show')}}>둘러보기</button>
       {/* <Animation /> */}
       {/* <Link to="/visitors">
         <button>방명록 쓰기</button>

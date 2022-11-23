@@ -2,7 +2,7 @@ import React, { useState, useRef, Fragment, useEffect } from "react";
 import styled from "styled-components";
 import music from "../media/우물-8.mp3";
 import axios from "axios";
-import { atom, useRecoilState } from "recoil"; // 훅 import
+import { useRecoilState } from "recoil"; // 훅 import
 import details from "../atoms/details";
 import { useNavigate } from "react-router-dom";
 
@@ -79,6 +79,7 @@ const Show = () => {
         <audio src={music} ref={audioRef} />
         <button onClick={playClick}>재생</button>
         <button onClick={stopClick}>중지</button>
+        <button onClick={()=>{navigate('/visitors')}}>방명록</button>
         <br />
         {showpicture.map((picture) => (
           <Fragment key={picture.no}>

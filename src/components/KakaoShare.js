@@ -8,7 +8,7 @@ const KakaoShare = () => {
     // kakao sdk script이 정상적으로 불러와졌으면 window.Kakao로 접근이 가능합니다
     if (window.Kakao) {
       const kakao = window.Kakao
-      // 중복 initialization 방지
+      // 중복 initialization 방지ㅇ
       if (!kakao.isInitialized()) {
         // 두번째 step 에서 가져온 javascript key 를 이용하여 initialize
         kakao.init(process.env.REACT_APP_KAKAO_KEY)

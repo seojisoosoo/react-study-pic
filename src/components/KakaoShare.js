@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
+const KAKAO_KEY = process.env.REACT_APP_KAKAO_KEY
 
 const KakaoShare = () => {
-  const KAKAO_KEY = process.env.REACT_APP_KAKAO_KEY
   window.Kakao.init(KAKAO_KEY)
   const kakao = window.Kakao
   console.log(kakao.isInitialized)

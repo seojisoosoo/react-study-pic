@@ -60,7 +60,7 @@ const KakaoShare = () => {
   // }
   return (
     <div className="kakao-share-button">
-      {/* Kakao share button */}
+      {/* Kakao share buttonㅇ */}
       <button id="kakao-link-btn" onClick={()=>{console.log(process.env.REACT_APP_AMUMAL)}}>
         카톡 공유
       </button>

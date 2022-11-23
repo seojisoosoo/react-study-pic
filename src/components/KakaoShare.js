@@ -21,7 +21,7 @@ const KakaoShare = () => {
         console.log(kakao.isInitialized)
         console.log(window.Kakao)
       }
-      kakao.Share.createDefaultButton({
+      window.Kakao.Share.createDefaultButton({
         // Render 부분 id=kakao-link-btn 을 찾아 그부분에 렌더링을 합니다
         container: '#kakao-link-btn',
         objectType: 'feed',

@@ -7,10 +7,6 @@ import ShowSecond from "./ShowSecond";
 import ShowDetail from "./pages/ShowDetail";
 import {
   RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
 } from "recoil";
 
 const App = () => {

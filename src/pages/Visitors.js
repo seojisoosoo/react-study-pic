@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
 const Font = styled.p`

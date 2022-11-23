@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react'
 
 const KakaoShare = () => {
+  const KAKAO_KEY = process.env.REACT_APP_KAKAO_KEY
+  window.Kakao.init(KAKAO_KEY)
   useEffect(() => {
     createKakaoButton()
   }, [])
   const createKakaoButton = () => {
+    const KAKAO_KEY = process.env.REACT_APP_KAKAO_KEY
     // kakao sdk script이 정상적으로 불러와졌으면 window.Kakao로 접근이 가능합니다
     if (window.Kakao) {
       const kakao = window.Kakao
       // 중복 initialization 방지ㅇ
       if (!kakao.isInitialized()) {
         // 두번째 step 에서 가져온 javascript key 를 이용하여 initialize
-        kakao.init(process.env.REACT_APP_KAKAO_KEY)
+        kakao.init(KAKAO_KEY)
+        console.log(kakao.isInitialized)
       }
       kakao.Share.createDefaultButton({
         // Render 부분 id=kakao-link-btn 을 찾아 그부분에 렌더링을 합니다

@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
@@ -47,17 +47,17 @@ const Landing = () => {
   };
   let localStorageName = window.localStorage.getItem("userName");
 
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
-    script.async = true
+  // useEffect(() => {
+  //   const script = document.createElement('script')
+  //   script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
+  //   script.async = true
 
-    document.body.appendChild(script)
+  //   document.body.appendChild(script)
 
-    return () => {
-      document.body.removeChild(script)
-    }
-  }, [])
+  //   return () => {
+  //     document.body.removeChild(script)
+  //   }
+  // }, [])
 
   return (
     <Dom>

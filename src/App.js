@@ -3,7 +3,7 @@ import Show from "./pages/Show";
 import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Visitors from "./pages/Visitors";
-import ShowSecond from "./ShowSecond";
+// import ShowSecond from "./ShowSecond";
 import ShowDetail from "./pages/ShowDetail";
 import {
   RecoilRoot,
@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/show/:id" element={<ShowDetail />} />
           <Route path="/" element={<Landing />} />
           <Route path="/visitors" element={<Visitors />} />
-          <Route path="/showsecond" element={<ShowSecond />} />
+          {/* <Route path="/showsecond" element={<ShowSecond />} /> */}
         </Routes>
       </RecoilRoot>
     </>

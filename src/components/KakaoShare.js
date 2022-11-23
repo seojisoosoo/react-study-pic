@@ -1,68 +1,62 @@
-import {useEffect} from 'react';
+import React, { useEffect } from 'react'
 
-const KakaoShare= () => {
-  const url = window.location.href; //현재 url가져오기
+const KakaoShare = () => {
   useEffect(() => {
-    initKakao(); //
-  }, []);
-
-//자바스크립트키로 카카오 init
-  const initKakao = () => {
+    createKakaoButton()
+  }, [])
+  const createKakaoButton = () => {
+    // kakao sdk script이 정상적으로 불러와졌으면 window.Kakao로 접근이 가능합니다
     if (window.Kakao) {
-      const kakao = window.Kakao;
+      const kakao = window.Kakao
+      // 중복 initialization 방지
       if (!kakao.isInitialized()) {
-        kakao.init(process.env.REACT_APP_KAKAO_TOKEN);
+        // 두번째 step 에서 가져온 javascript key 를 이용하여 initialize
+        kakao.init(process.env.REACT_APP_KAKAO_KEY)
       }
+      kakao.Link.createDefaultButton({
+        // Render 부분 id=kakao-link-btn 을 찾아 그부분에 렌더링을 합니다
+        container: '#kakao-link-btn',
+        objectType: 'feed',
+        content: {
+          title: '타이틀',
+          description: '#리액트 #카카오 #공유버튼',
+          imageUrl: 'IMAGE_URL', // i.e. process.env.FETCH_URL + '/logo.png'
+          link: {
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href,
+          },
+        },
+        social: {
+          likeCount: 77,
+          commentCount: 55,
+          sharedCount: 333,
+        },
+        buttons: [
+          {
+            title: '웹으로 보기',
+            link: {
+              mobileWebUrl: window.location.href,
+              webUrl: window.location.href,
+            },
+          },
+          {
+            title: '앱으로 보기',
+            link: {
+              mobileWebUrl: window.location.href,
+              webUrl: window.location.href,
+            },
+          },
+        ],
+      })
     }
-  };
-
-//버튼을 누르면 실행되는 함수
-  const shareKakao = () => {
-//이부분이 매우 헷갈림 여러 사이트를 참고했는데 이 sendDefault부분을 잘 봐야한다.
-window.Kakao.Link.sendDefault({ 
-  objectType: 'feed',
-  content: {
-    title: '딸기 치즈 케익',
-    description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
-    imageUrl: 'http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
-    link: {
-      mobileWebUrl: url,
-      webUrl: url,
-    },
-  },
-  social: {
-    likeCount: 286,
-    commentCount: 45,
-    sharedCount: 845,
-  },
-  buttons: [
-    {
-      title: '웹으로 보기',
-      link: {
-        mobileWebUrl: url,
-        webUrl: url,
-      },
-    },
-    {
-      title: '앱으로 보기',
-      link: {
-        mobileWebUrl: url,
-        webUrl: url,
-      },
-    },
-  ],
-});
-};
-
-return (
-
-    <div className="share-node" onClick={shareKakao}>
-        <img src="이미지" alt="카카오공유" />
-        <p>카톡</p>
+  }
+  return (
+    <div className="kakao-share-button">
+      {/* Kakao share button */}
+      <button id="kakao-link-btn">
+        카톡 공유
+      </button>
     </div>
-);
-};
-
-export default KakaoShare;
-
-
+  )
+}
+export default KakaoShare

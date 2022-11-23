@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
@@ -47,6 +47,18 @@ const Landing = () => {
   };
   let localStorageName = window.localStorage.getItem("userName");
 
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
+    script.async = true
+
+    document.body.appendChild(script)
+
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, [])
+
   return (
     <Dom>
       <Font className="animate__animated animate__tada">
@@ -66,7 +78,9 @@ const Landing = () => {
         {hi}
       </Font>
       <button onClick={()=>{navigate('/show')}}>둘러보기</button>
+      <div className="layout">
       <KakaoShare />
+    </div>
       {/* <Animation /> */}
       {/* <Link to="/visitors">
         <button>방명록 쓰기</button>

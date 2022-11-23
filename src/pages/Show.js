@@ -36,7 +36,7 @@ const Show = () => {
       setShowPicture(response.data.collections);
     };
     fetchData();
-  }, []);
+  }, [setShowPicture]);
 
   const darkMode = () => {
     console.log(dark);

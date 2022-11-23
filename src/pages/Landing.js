@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 // import Animation from "./Animation";
@@ -45,6 +45,35 @@ const Landing = () => {
     setCheck(false);
   };
   let localStorageName = window.localStorage.getItem("userName");
+
+  useEffect(()=>{
+    const script=document.createElement("script");
+    script.src="https://developers.kakao.com/sdk/js/kakao.js";
+    script.async=true;
+    document.body.appendChild(script);
+    return()=>document.body.removeChild(script);
+  },[]);
+
+  const shareToKakao=()=>{
+    if(window.Kakao){
+      const kakao=window.Kakao;
+      if(!kakao.isInitialized()){
+        kakao.init("198bc29d107940180669210c4e3e6539");
+      }
+      kakao.Link.sendDefault({
+        objectType:"feed",
+        content:{
+          title:"이중섭미술관",
+          decription:"이중섭미술관에 오신것을 환영합니다. ",
+          imageUrl:"이미지 주소",
+          link:{
+            mobileWebUrl: "https://ljs-pictures.netlify.app",
+            weUrl:"https://ljs-pictures.netlify.app",
+          }
+        }
+      })
+    }
+  }
   return (
     <Dom>
       <Font className="animate__animated animate__tada">
@@ -64,6 +93,7 @@ const Landing = () => {
         {hi}
       </Font>
       <button onClick={()=>{navigate('/show')}}>둘러보기</button>
+      <button onCanPlay={shareToKakao()}>카카오톡 공유하기</button>
       {/* <Animation /> */}
       {/* <Link to="/visitors">
         <button>방명록 쓰기</button>

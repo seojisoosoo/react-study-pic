@@ -3,6 +3,9 @@ import React, { useEffect } from 'react'
 const KakaoShare = () => {
   const KAKAO_KEY = process.env.REACT_APP_KAKAO_KEY
   window.Kakao.init(KAKAO_KEY)
+  const kakao = window.Kakao
+  console.log(kakao.isInitialized)
+  console.log(window.Kakao)
   useEffect(() => {
     createKakaoButton()
   }, [])
@@ -16,6 +19,7 @@ const KakaoShare = () => {
         // 두번째 step 에서 가져온 javascript key 를 이용하여 initialize
         kakao.init(KAKAO_KEY)
         console.log(kakao.isInitialized)
+        console.log(window.Kakao)
       }
       kakao.Share.createDefaultButton({
         // Render 부분 id=kakao-link-btn 을 찾아 그부분에 렌더링을 합니다
